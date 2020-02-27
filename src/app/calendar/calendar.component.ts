@@ -3,7 +3,6 @@ import { FullCalendarComponent } from '@fullcalendar/angular';
 import { EventInput } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 
-import { fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-calendar',
