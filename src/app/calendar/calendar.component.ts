@@ -2,7 +2,7 @@ import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { FullCalendarComponent } from '@fullcalendar/angular';
 import { EventInput } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
-import interactionPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
 
 
 @Component({
@@ -23,10 +23,6 @@ export class CalendarComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    const calendarApi = this.calendarComponent.getApi();
-    console.log(calendarApi);
-    calendarApi.on('dateClick', e => console.log(e));
-    this.calendarComponent.dateClick.next(12);
   }
 
   handleDateClick(eventClick) {
