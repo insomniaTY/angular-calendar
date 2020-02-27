@@ -1,12 +1,12 @@
-<div class="container">
-  <full-calendar
+<div class="container text-center">
+  <full-calendar class="calendar" (dateClick)="handleDateClick($event)" [plugins]="calendarPlugins"
   defaultView="dayGridMonth"
   [plugins]="calendarPlugins"
   [weekends]="false"
   [events]="[
-    { title: 'event 1', date: '2019-04-01' },
+    { title: 'event 2', date: '2019-04-02' },
     { title: 'event 2', date: '2019-04-02' }
-  ]"
+    ]"
 ></full-calendar>
-
 </div>
+
