@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { FullCalendarComponent } from '@fullcalendar/angular';
-import { EventInput, Calendar } from '@fullcalendar/core';
+import { EventInput } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/daygrid';
 
 
 @Component({
@@ -9,22 +10,26 @@ import dayGridPlugin from '@fullcalendar/daygrid';
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })
-export class CalendarComponent implements OnInit {
-  @ViewChild('calendar', {static: false}) calendarComponent: FullCalendarComponent;
+export class CalendarComponent implements AfterViewInit {
+  @ViewChild('calendar', { static: true }) calendarComponent: FullCalendarComponent;
   defaultDate = new Date('1900-01-01');
-  calendarVisible = true;
-  calendarPlugins = [dayGridPlugin];
-  calendarWeekends = true;
+  calendarPlugins = [interactionPlugin, dayGridPlugin];
 
   calendarEvents: EventInput[] = [
     { title: 'Event Now', start: new Date() }
   ];
-  constructor() {}
 
-  ngOnInit() {
-    console.log(this.calendarPlugins[0]);
+  constructor() {
   }
-  handleDateClick(eventClick, view) {
-    console.log(eventClick, view);
+
+  ngAfterViewInit() {
+    const calendarApi = this.calendarComponent.getApi();
+    console.log(calendarApi);
+    calendarApi.on('dateClick', e => console.log(e));
+    this.calendarComponent.dateClick.next(12);
+  }
+
+  handleDateClick(eventClick) {
+    console.log(eventClick);
   }
 }
