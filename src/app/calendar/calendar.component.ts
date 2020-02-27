@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { FullCalendarComponent } from '@fullcalendar/angular';
-import { EventInput } from '@fullcalendar/core';
+import { EventInput, Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 
 
@@ -11,10 +11,11 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 })
 export class CalendarComponent implements OnInit {
   @ViewChild('calendar', {static: false}) calendarComponent: FullCalendarComponent;
-
+  defaultDate = new Date('1900-01-01');
   calendarVisible = true;
   calendarPlugins = [dayGridPlugin];
   calendarWeekends = true;
+
   calendarEvents: EventInput[] = [
     { title: 'Event Now', start: new Date() }
   ];
@@ -23,7 +24,7 @@ export class CalendarComponent implements OnInit {
   ngOnInit() {
     console.log(this.calendarPlugins[0]);
   }
-  handleDateClick(eventClick) {
-    console.log(eventClick);
+  handleDateClick(eventClick, view) {
+    console.log(eventClick, view);
   }
 }
