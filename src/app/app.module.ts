@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -24,6 +25,7 @@ import { CalendarComponent } from './calendar/calendar.component';
     FormsModule,
     FullCalendarModule,
     TypeaheadModule.forRoot(),
+    ModalModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule
   ],

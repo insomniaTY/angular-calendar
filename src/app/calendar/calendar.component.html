@@ -2,13 +2,32 @@
   <full-calendar (dateClick)="handleDateClick($event)"
                  [selectable]="true"
                  [plugins]="calendarPlugins"
-                 [weekends]="false"
+                 [weekends]="true"
                  defaultView="dayGridMonth"
                  [events]="calendarEvents"
                  #calendar
   ></full-calendar>
 </div>
 
-<div>
-  <pre>{{ defaultDate.getDay() }}</pre>
+<div class="col-md-2">
+<button type="button" class="btn btn-primary" (click)="showModal()">Note</button>
+<div bsModal #Modal="bs-modal" class="modal fade" tabindex="-1"
+     role="dialog" aria-labelledby="dialog-child-name">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="dialog-child-name" class="modal-title pull-left">Write your note</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input class="form-control" type="text">
+      </div>
+      <div class="modal-body">
+        <button type="button" class="btn btn-primary">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
