@@ -1,9 +1,9 @@
-import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, TemplateRef } from '@angular/core';
 import { FullCalendarComponent } from '@fullcalendar/angular';
 import { EventInput } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import { ModalDirective } from 'ngx-bootstrap/modal';
+import { BsModalRef, BsModalService, ModalDirective } from 'ngx-bootstrap/modal';
 import { FirebaseService } from '../shared/firebase.service';
 
 
@@ -13,8 +13,12 @@ import { FirebaseService } from '../shared/firebase.service';
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements AfterViewInit {
+
   @ViewChild('calendar', { static: true }) calendarComponent: FullCalendarComponent;
-  @ViewChild('Modal', { static: false }) Modal: ModalDirective;
+  @ViewChild('modal', { static: true }) modal: TemplateRef<any>;
+
+  modalRef: BsModalRef;
+
   defaultDate = new Date('1900-01-01');
   input = '';
   calendarPlugins = [interactionPlugin, dayGridPlugin];
@@ -23,7 +27,8 @@ export class CalendarComponent implements AfterViewInit {
   ];
 
   constructor(
-    private firebaseService: FirebaseService
+    private firebaseService: FirebaseService,
+    private modalService: BsModalService
   ) {
   }
 
@@ -31,16 +36,19 @@ export class CalendarComponent implements AfterViewInit {
   }
 
   handleDateClick(eventClick) {
+    this.showModal(this.modal);
     return this.input;
     console.log(eventClick, this.input);
   }
 
-  showModal() {
-    this.Modal.show();
+  showModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
 
   hideModal() {
-    this.Modal.hide();
+    if (this.modalRef) {
+      this.modalRef.hide();
+    }
   }
 
   clearValueInput() {
