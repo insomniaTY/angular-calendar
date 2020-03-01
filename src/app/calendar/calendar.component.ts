@@ -16,7 +16,7 @@ export class CalendarComponent implements AfterViewInit {
   @ViewChild('calendar', { static: true }) calendarComponent: FullCalendarComponent;
   @ViewChild('Modal', { static: false }) Modal: ModalDirective;
   defaultDate = new Date('1900-01-01');
-  value = '';
+  input = '';
   calendarPlugins = [interactionPlugin, dayGridPlugin];
   calendarEvents: EventInput[] = [
     { title: 'Event Now', start: new Date() }
@@ -31,8 +31,8 @@ export class CalendarComponent implements AfterViewInit {
   }
 
   handleDateClick(eventClick) {
-    // document.querySelector('input').addEventListener('eventClick', this.calendarEvents.bind(this));
-    console.log(eventClick);
+    return this.input;
+    console.log(eventClick, this.input);
   }
 
   showModal() {
