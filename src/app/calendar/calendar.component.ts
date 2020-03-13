@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import {Component, ViewChild, AfterViewInit, TemplateRef, OnInit} from '@angular/core';
+=======
+import { Component, ViewChild, AfterViewInit, TemplateRef } from '@angular/core';
+>>>>>>> 9c2fdbe6436322e26e78de7ea493b2931ae6bf18
 import { FullCalendarComponent } from '@fullcalendar/angular';
 import { EventInput } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -15,13 +19,22 @@ import { map } from 'rxjs/operators';
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })
+<<<<<<< HEAD
 export class CalendarComponent implements OnInit, AfterViewInit {
+=======
+export class CalendarComponent implements AfterViewInit {
+>>>>>>> 9c2fdbe6436322e26e78de7ea493b2931ae6bf18
 
   @ViewChild('calendar', { static: true }) calendarComponent: FullCalendarComponent;
   @ViewChild('modal', { static: true }) modal: TemplateRef<any>;
 
   modalRef: BsModalRef;
+<<<<<<< HEAD
   data: Data[];
+=======
+
+  defaultDate = new Date('1900-01-01');
+>>>>>>> 9c2fdbe6436322e26e78de7ea493b2931ae6bf18
   input = '';
   defaultDate = new Date('1900-01-01');
   calendarPlugins = [interactionPlugin, dayGridPlugin];
@@ -58,5 +71,12 @@ export class CalendarComponent implements OnInit, AfterViewInit {
     if (this.modalRef) {
       this.modalRef.hide();
     }
+<<<<<<< HEAD
+=======
+  }
+
+  clearValueInput() {
+
+>>>>>>> 9c2fdbe6436322e26e78de7ea493b2931ae6bf18
   }
 }
