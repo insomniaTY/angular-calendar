@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-import {Calendar} from '@fullcalendar/core/Calendar';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Data } from './data.model';
 
+import { HttpClient } from '@angular/common/http';
+import {Observable, pipe} from 'rxjs';
+
+import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
-  private dbPath = '/days';
-  CalendarRef: AngularFireList<Calendar> = null;
+  data: Observable<Data>;
+  constructor(
+    private firestore: AngularFirestore) {}
 
-  constructor(private db: AngularFireDatabase) {
-    this.CalendarRef = db.list(this.dbPath);
-  }
-
-  getValue() {
-    return this.CalendarRef = this.db.list(this.dbPath);
-  }
+ getData() {
+    return this.firestore.collection('games').snapshotChanges();
+ }
 }
