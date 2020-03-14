@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Data } from './data.model';
+import { Observable } from 'rxjs';
 
-import { HttpClient } from '@angular/common/http';
-import {Observable, pipe} from 'rxjs';
+import { Game } from './data.model';
 
-import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
-  data: Observable<Data>;
-  constructor(
-    private firestore: AngularFirestore) {}
+  data: Observable<Game>;
 
- getData() {
-    return this.firestore.collection('games').snapshotChanges();
- }
+  constructor(
+    private firestore: AngularFirestore) {
+  }
+
+  getData() {
+    return this.firestore.collection<Game>('games').get();
+  }
 }

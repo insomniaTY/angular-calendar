@@ -1,8 +1,11 @@
-export class Data {
+import { firestore } from 'firebase';
+import Timestamp = firestore.Timestamp;
+
+export class Game {
   name: string;
   developer: string;
   publisher: string;
-  releaseDate: number;
+  releaseDate: Timestamp;
   coverURL: string;
   screenshots: [];
   platforms: string[];
