@@ -2,9 +2,6 @@
   height: 30%;
   width: 55%;
 }
-.modal-header {
-
-}
 
 .modal-dialog {
   width: 1200px;
@@ -12,20 +9,37 @@
 }
 
 .modal-body {
- width: 200px;
-  display: block;
+ height: 100vh;
+  width:500px;
+
+}
+
+.modal-body  p {
+ margin: 100px;
 }
 
 .modal {
   height: 5000vh;
 }
 
+.img-fluid {
+  margin: 15px;
+  height: 550px;
+}
+
+p {
+  float: random($limit: 5);
+  margin: 15px;
+}
 
 input {
   height: 50px;
 }
 
-.modal-dialog {
-  height: 1200px;
+video {
+  margin: 15px;
+  height: 230px;
 }
+
+
 

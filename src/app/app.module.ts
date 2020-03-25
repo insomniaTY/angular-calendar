@@ -18,6 +18,8 @@ import { AppComponent } from './app.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 
+import { YouTubePlayerModule } from '@angular/youtube-player';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +37,8 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
     HttpClientModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    YouTubePlayerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

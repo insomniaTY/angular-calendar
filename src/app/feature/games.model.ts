@@ -1,4 +1,4 @@
-export class Data {
+export class Game {
   name: string;
   developer: string;
   publisher: string;

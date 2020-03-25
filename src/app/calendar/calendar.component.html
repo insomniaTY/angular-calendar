@@ -9,21 +9,31 @@
   ></full-calendar>
 </div>
 
-<div class="col-md-2">
-  <button type="button" class="btn btn-primary" (click)="showModal(modal)">Note</button>
+<div class="container">
+  <button type="button" class="btn btn-primary" (click)="showModal(modal)">Games</button>
 </div>
 
 <ng-template #modal>
   <div class="modal-header">
-    <h4 id="dialog-child-name" class="modal-title pull-left">Write your note</h4>
+    <h4 id="dialog-child-name" class="modal-title pull-left">List of Games</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="hideModal()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body">
-    <p>{{ data }}</p>
-  </div>
-  <div class="modal-body">
-    <button type="button" class="btn btn-primary">Close</button>
+  <div class="modal-body pagination" *ngFor="let game of games$ | async" class="games">
+    <p> Name: {{ game.name }}</p>
+    <p>Developer: {{ game.developer }}</p>
+    <p>Publisher: {{ game.publisher }}</p>
+    <p>Release Date: {{ game.releaseDate.seconds * 1000 | date: 'dd/MM/yyyy' }}</p>
+    <img class="img-fluid" [src]="game.coverURL">
+    <p>{{ game.screenshots }}</p>
+    <p>Platforms: {{ game.platforms }}</p>
+    <p>Genre: {{ game.genre }}</p>
+    <p>{{game.screenshots}}</p>
+    <video controls #video type="video/youtube">
+      <source [src]="game.trailer">
+    </video>
   </div>
 </ng-template>
+
+
