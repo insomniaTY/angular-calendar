@@ -33,14 +33,8 @@
     <video controls #video type="video/youtube">
       <source [src]="game.trailer">
     </video>
-  <div class="modal-body">
-    <div *ngFor="let game of games$ | async" class="games">
-      <h3>{{game.name}}</h3>
-      <img [src]="game.coverURL">
-      <p>Date: {{game.releaseDate.toDate()}}</p>
-      <p>Angular date pipe: {{game.releaseDate.seconds * 1000 | date: 'dd/MM/yyyy'}}</p>
-    </div>
   </div>
+</ng-template>
 
 
 
