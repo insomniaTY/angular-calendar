@@ -20,6 +20,7 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
+<<<<<<< HEAD
   <div class="modal-body pagination" *ngFor="let game of games$ | async" class="games">
     <p> Name: {{ game.name }}</p>
     <p>Developer: {{ game.developer }}</p>
@@ -33,6 +34,18 @@
     <video controls #video type="video/youtube">
       <source [src]="game.trailer">
     </video>
+=======
+  <div class="modal-body">
+    <div *ngFor="let game of games$ | async" class="games">
+      <h3>{{game.name}}</h3>
+      <img [src]="game.coverURL">
+      <p>Date: {{game.releaseDate.toDate()}}</p>
+      <p>Angular date pipe: {{game.releaseDate.seconds * 1000 | date: 'dd/MM/yyyy'}}</p>
+    </div>
+  </div>
+  <div class="modal-body">
+    <button type="button" class="btn btn-primary">Close</button>
+>>>>>>> f22abbfec42b7c0a460497aa3c3e0de4dd9474b5
   </div>
 </ng-template>
 
