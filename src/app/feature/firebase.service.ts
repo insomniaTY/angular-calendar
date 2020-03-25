@@ -15,7 +15,6 @@ export class FirebaseService {
   }
 
  getData() {
-  //  return this.firestore.collection<Game>('games').get();
    return this.firestore.collection<Game>('games', ref => ref.where('date', '==', '20-03-2020')).get();
 
   }

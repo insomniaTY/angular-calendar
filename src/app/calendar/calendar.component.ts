@@ -1,4 +1,3 @@
-
 import { Component, ViewChild, AfterViewInit, TemplateRef, OnInit, OnDestroy, ElementRef, Query } from '@angular/core';
 
 import { FullCalendarComponent } from '@fullcalendar/angular';
@@ -10,8 +9,9 @@ import { BsModalRef, BsModalService, ModalDirective } from 'ngx-bootstrap/modal'
 import { FirebaseService } from '../feature/firebase.service';
 import { Game } from '../feature/games.model';
 
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, pipe } from 'rxjs';
+import { map, filter } from 'rxjs/operators';
+
 import { QuerySnapshot } from '@angular/fire/firestore';
 
 @Component({
