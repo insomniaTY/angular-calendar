@@ -4,6 +4,7 @@ import { FullCalendarComponent } from '@fullcalendar/angular';
 import { EventInput } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
+
 import { BsModalRef, BsModalService, ModalDirective } from 'ngx-bootstrap/modal';
 
 import { FirebaseService } from '../feature/firebase.service';
@@ -32,7 +33,9 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy {
   games$: Observable<Game[]> = this.firebaseService.getData()
   .pipe(
     map((data: QuerySnapshot<Game>) => data.docs.map(d => d.data()))
-  );
+   );
+
+
 
   defaultDate = new Date('1900-01-01');
   input = '';
@@ -56,10 +59,11 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit() {
   }
 
-  handleDateClick(eventClick) {
+  handleDateClick(eventClick, info) {
+    const clickedDate = new Date(info.dateStr).getTime();
     this.showModal(this.modal);
     return this.input;
-    console.log(eventClick, this.input);
+    console.log(eventClick, this.input, info);
   }
 
   showModal(template: TemplateRef<any>) {
@@ -70,9 +74,5 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.modalRef) {
       this.modalRef.hide();
     }
-  }
-
-  clearValueInput() {
-
   }
 }
