@@ -1,5 +1,5 @@
 <div class="container-fluid text-center">
-  <full-calendar (dateClick)="handleDateClick($event)"
+  <full-calendar (dateClick)="onDateClick($event)"
                  [selectable]="true"
                  [plugins]="calendarPlugins"
                  plugins="interaction"
@@ -10,10 +10,6 @@
   ></full-calendar>
 </div>
 
-<div class="container">
-  <button type="button" class="btn btn-primary" (click)="showModal(modal)">Games</button>
-</div>
-
 <ng-template #modal>
   <div class="modal-header">
     <h4 id="dialog-child-name" class="modal-title pull-left">List of Games</h4>
@@ -21,7 +17,7 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body pagination" *ngFor="let game of games$ | async" class="games">
+  <div class="modal-body pagination" *ngFor="let game of games" class="games">
     <p> Name: {{ game.name }}</p>
     <p>Developer: {{ game.developer }}</p>
     <p>Publisher: {{ game.publisher }}</p>
@@ -34,7 +30,6 @@
     <video controls #video type="video/youtube">
       <source [src]="game.trailer">
     </video>
-    <pre>{{games$ | async | json}}</pre>
   </div>
 </ng-template>
 
