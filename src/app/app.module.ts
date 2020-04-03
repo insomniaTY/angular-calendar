@@ -40,7 +40,7 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
     AngularFireAuthModule,
     YouTubePlayerModule
   ],
-  providers: [],
+  providers: [{ provide: YouTubePlayerModule}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

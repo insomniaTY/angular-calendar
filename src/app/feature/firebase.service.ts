@@ -15,11 +15,12 @@ export class FirebaseService {
   constructor(
     private fireStore: AngularFirestore) {
   }
-  getData() {
-    const date = Timestamp.fromDate(new Date(2020, 2, 31))
+  getData(date: Date) {
+    const timestamp = Timestamp.fromDate(date);
     return this.fireStore
-      .collection<Game>('games', ref =>
-        ref.where('releaseDate', '==', date)
+      .collection<Game>('games'
+        , ref =>
+          ref.where('releaseDate', '==', timestamp)
       ).get();
   }
 }
