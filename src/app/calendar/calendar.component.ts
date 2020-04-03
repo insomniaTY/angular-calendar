@@ -30,6 +30,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('video', { static: true }) video: ElementRef;
   modalRef: BsModalRef;
   games: Game[] = [];
+
   defaultDate = new Date('1900-01-01');
   input = '';
   calendarPlugins = [interactionPlugin, dayGridPlugin];

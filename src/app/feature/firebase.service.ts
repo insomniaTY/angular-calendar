@@ -17,10 +17,11 @@ export class FirebaseService {
   }
   getData(date: Date) {
     const timestamp = Timestamp.fromDate(date);
+    console.log(timestamp);
     return this.fireStore
       .collection<Game>('games'
         , ref =>
-          ref.where('releaseDate', '==', timestamp)
+        ref.where('releaseDate', '==', timestamp)
       ).get();
   }
 }
