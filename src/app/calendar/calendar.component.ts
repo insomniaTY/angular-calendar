@@ -1,4 +1,4 @@
-import { Component, ViewChild, AfterViewInit, TemplateRef, OnInit, OnDestroy, ElementRef } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, TemplateRef, OnInit, OnDestroy, ElementRef, HostListener, Inject, Injectable } from '@angular/core';
 
 import { FullCalendarComponent } from '@fullcalendar/angular';
 import { EventInput } from '@fullcalendar/core';
@@ -17,6 +17,7 @@ import { QuerySnapshot } from '@angular/fire/firestore';
 
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-calendar',
@@ -25,9 +26,10 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  @ViewChild('calendar', { static: true }) calendarComponent: FullCalendarComponent;
-  @ViewChild('modal', { static: true }) modal: TemplateRef<any>;
-  @ViewChild('video', { static: true }) video: ElementRef;
+@ViewChild('calendar', { static: true }) calendarComponent: FullCalendarComponent;
+@ViewChild('modal', { static: true }) modal: TemplateRef<any>;
+@ViewChild('video', { static: true }) video: ElementRef;
+
   modalRef: BsModalRef;
   games: Game[] = [];
 
@@ -71,6 +73,12 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy {
     this.modalRef = this.modalService.show(template);
   }
 
+  hideModal() {
+    if (this.modalRef) {
+      this.modalRef.hide();
+    }
+  }
+
   getYoutubeEmbedLink(link: string): SafeResourceUrl {
     const url = new URL(link);
     const id = url.searchParams.get('v');
@@ -80,9 +88,13 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
-  hideModal() {
-    if (this.modalRef) {
-      this.modalRef.hide();
-    }
+  fullscreenmode() {
+    let elem =  document.body;
+    let methodToBeInvoked = elem.requestFullscreen ||
+     elem.requestFullscreen || elem['mozRequestFullscreen'] ||
+     elem['msRequestFullscreen'];
+    if(methodToBeInvoked) methodToBeInvoked.call(elem);
   }
 }
+
+

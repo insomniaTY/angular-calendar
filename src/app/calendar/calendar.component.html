@@ -27,16 +27,18 @@
     <p>Platforms: {{ game.platforms }}</p>
     <p>Genre: {{ game.genre }}</p>
     <p>{{game.screenshots}}</p>
-  <iframe class="embed-responsive" width="400"  [src]="getYoutubeEmbedLink(game.trailer)" height="315"
-  allow="accelerometer: autoplay;
-  encrypted-media: gyroscope; picture-in-picture"
-  allowfullscreen="allowfullscreen"
-  mozallowfullscreen="mozallowfullscreen"
-  msallowfullscreen="msallowfullscreen"
-  oallowfullscreen="oallowfullscreen"
-  webkitallowfullscreen="webkitallowfullscreen"
-  frameborder="0">
-</iframe>
+    <div class="embed-responsive embed-responsive-4by3">
+
+      <iframe class="embed-responsive-item" width="400"  [src]="getYoutubeEmbedLink(game.trailer)"
+      height="315"
+      allow="accelerometer: autoplay;
+      encrypted-media: gyroscope; picture-in-picture"
+      allowfullscreen
+      frameborder="0">
+      </iframe>
+      <button (click)="fullscreenmode()">Full</button>
+    </div>
+
   </div>
 </ng-template>
 
