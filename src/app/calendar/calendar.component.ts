@@ -1,4 +1,15 @@
-import { Component, ViewChild, AfterViewInit, TemplateRef, OnInit, OnDestroy, ElementRef, HostListener, Inject, Injectable } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  AfterViewInit,
+  TemplateRef,
+  OnInit,
+  OnDestroy,
+  ElementRef,
+  HostListener,
+  Inject,
+  Injectable
+} from '@angular/core';
 
 import { FullCalendarComponent } from '@fullcalendar/angular';
 import { EventInput } from '@fullcalendar/core';
@@ -26,9 +37,9 @@ import { DOCUMENT } from '@angular/common';
 })
 export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy {
 
-@ViewChild('calendar', { static: true }) calendarComponent: FullCalendarComponent;
-@ViewChild('modal', { static: true }) modal: TemplateRef<any>;
-@ViewChild('video', { static: true }) video: ElementRef;
+  @ViewChild('calendar', { static: true }) calendarComponent: FullCalendarComponent;
+  @ViewChild('modal', { static: true }) modal: TemplateRef<any>;
+  @ViewChild('video', { static: true }) video: ElementRef;
 
   modalRef: BsModalRef;
   games: Game[] = [];
@@ -44,7 +55,8 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy {
     private firebaseService: FirebaseService,
     private modalService: BsModalService,
     private http: HttpClient,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    @Inject(DOCUMENT) private document: Document
   ) {
   }
 
@@ -64,8 +76,8 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy {
         tap(console.log),
         take(1)
       ).subscribe(data => {
-        this.games = data;
-        this.showModal(this.modal);
+      this.games = data;
+      this.showModal(this.modal);
     });
   }
 
@@ -84,16 +96,17 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy {
     const id = url.searchParams.get('v');
     return this.getUrl(`https://www.youtube.com/embed/${id}`);
   }
+
   getUrl(url: string): SafeResourceUrl {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
-  fullscreenmode() {
-    let elem =  document.body;
-    let methodToBeInvoked = elem.requestFullscreen ||
-     elem.requestFullscreen || elem['mozRequestFullscreen'] ||
-     elem['msRequestFullscreen'];
-    if(methodToBeInvoked) methodToBeInvoked.call(elem);
+  fullScreen(elem) {
+    // tslint:disable-next-line
+    const methodToBeInvoked = elem.requestFullscreen || elem['webkitRequestFullscreen'] || elem['mozRequestFullscreen'] || elem['msRequestFullscreen'];
+    if (methodToBeInvoked) {
+      methodToBeInvoked.call(elem);
+    }
   }
 }
 
