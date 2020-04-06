@@ -4,9 +4,11 @@ node_js:
 
 brances:
   only:
-  -master
+  - master
+
   before_script:
   - npm install -g @angular/cli
+
   script:
   - npm install
   - npm run build
