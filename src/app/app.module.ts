@@ -7,7 +7,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
 
-import { AngularFireModule } from '@angular/fire';
+import { AngularFireModule, FirebaseOptionsToken, FirebaseApp } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
@@ -32,7 +32,7 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
     FullCalendarModule,
     TypeaheadModule.forRoot(),
     ModalModule.forRoot(),
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     HttpClientModule,
     AngularFirestoreModule,

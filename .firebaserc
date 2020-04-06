@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "calendar-de670"
+  },
+  "targets": {
+    "calendar-de670": {
+      "hosting": {
+        "ng-calendar": [
+          "calendar-de670"
+        ]
+      }
+    }
   }
 }

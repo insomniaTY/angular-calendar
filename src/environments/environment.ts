@@ -1,10 +1,10 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-
+// @ts-ignore
 export const environment = {
-  production: false,
-  firebaseConfig: {
+  production: true,
+  firebase: {
     apiKey: 'AIzaSyDkyvFWadoitzKHqRkwHOtVhd-3Z34N8q8',
     authDomain: 'calendar-de670.firebaseapp.com',
     databaseURL: 'https://calendar-de670.firebaseio.com',
