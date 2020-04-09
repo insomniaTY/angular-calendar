@@ -10,7 +10,7 @@ before_script:
 script:
 - npm install
 - npm run build
-- firebase deploy --only hosting,functions --token "1//0c2Z_8LfDlbhoCgYIARAAGAwSNwF-L9IryXs-8Vr1kuuVS0N5lAYO-3Mf26Q2qPN8fpBZTOK5wxm-keM1n8Bc5Y48hfAr4_NVeIg"
+- firebase deploy --only hosting --token "1//0c2Z_8LfDlbhoCgYIARAAGAwSNwF-L9IryXs-8Vr1kuuVS0N5lAYO-3Mf26Q2qPN8fpBZTOK5wxm-keM1n8Bc5Y48hfAr4_NVeIg"
 deploy:
   skip_cleanup: true
   provider: firebase
