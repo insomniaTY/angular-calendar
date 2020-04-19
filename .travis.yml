@@ -5,10 +5,10 @@ branches:
   only:
   - master
 before_script:
-- npm install  --silent -g @angular/cli
-- npm install --silent  firebase-tools -g
-- npm install
+- npm install -g  --silent @angular/cli
+- npm install -g --silent  firebase-tools
 script:
+- npm install
 - npm run build
 -  ng deploy --only hosting:ng-calendar --token 1//0cjle2214XTkPCgYIARAAGAwSNwF-L9IrBkmKJqoaKrcmwxIckEzlYLJ-t3FrxvT7SZb30fIBwQHfwKr1cuRwd1__9QlVSXCXhnM
 deploy:
