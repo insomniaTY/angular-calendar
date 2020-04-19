@@ -1,20 +1,19 @@
-
-sudo: required
-addons:
-  chrome: stable
 language: node_js
+
 node_js:
-  - "10.0"
-branches:
-  only:
-    - master
+  - node # latest node
+
 before_script:
-  - npm install -g @angular/cli
+  - npm install -g --silent firebase-tools
+  - npm install -g --silent @angular/cli
+
 script:
-  - npm install
   - ng build --prod
-deploy:
-  skip_cleanup: true
-  provider: firebase
-  token:
-    secure: $FIREBASE_TOKEN
+
+after_success:
+  - test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && firebase deploy --token $FIREBASE_TOKEN --non-interactive
+
+notifications:
+  email:
+    on_failure: change
+    on_success: change
