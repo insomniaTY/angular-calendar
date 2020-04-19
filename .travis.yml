@@ -1,22 +1,22 @@
 language: node_js
 node_js:
-  - "6.9"
-
+- 12.16.1
 branches:
   only:
-    - master
-
+  - master
 before_script:
-  - npm install -g firebase-tools
-  - npm install -g @angular/cli
-
+- npm install -g @angular/cli
+- npm install firebase-tools -g
 script:
-  - ng build --prod
+- npm install
+- npm run build
+-  firebase deploy --only hosting:ng-calendar --token 1//0cjle2214XTkPCgYIARAAGAwSNwF-L9IrBkmKJqoaKrcmwxIckEzlYLJ-t3FrxvT7SZb30fIBwQHfwKr1cuRwd1__9QlVSXCXhnM
+deploy:
+  skip_cleanup: true
+  provider: firebase
+  token:
+    secure: 1//0c2Z_8LfDlbhoCgYIARAAGAwSNwF-L9IryXs-8Vr1kuuVS0N5lAYO-3Mf26Q2qPN8fpBZTOK5wxm-keM1n8Bc5Y48hfAr4_NVeIg
+env:
+  global:
+    secure: A47gN6U8RmUJaojm6F1rbW0uvfYrncBnXxkw0CvFOB3puNaiSd/8IQMraIC5kik4Lk9Sdwir6yoBtCs9doy02evPUMEdD4AOVtbqIHYlw+f0KSNdvHhfLCB83pDJX47iVbkKEZAbBfr229eq9B0DDDCfSUvRSNt6+J5seCf6cfW1cmu5T3gwM60wccolzvz01RFyrOskIRbzX0moAdbzrlckAPg1UQdFARcTymSLTvJrQ01rVsN/hDhbJFc58WmpbbH+xttFPOJFMo07NbAm1Kzv6G4h6JXj/56vcFBEoPBTwlpxk5cXwR2Z6cuhAm+vuTX3C+Ljy/oRN5HlmLlNDgrCTN+Ay7xdXIozbovJqbifWSOKAvNH0NmxebV73p0WclB/+j4fZzqDvxjATHAROJev63JYi+rT3wsvQkL/sLWVqinFmHXpYFGd/m5iWPyi0YAKUscnESE1PoNBCWLmJvGEkJeIZvgpu3NmsJeDCmjkDut8OII2YYNE9HZXQjYj4XOI1QLKwUlV5nW4ofwMtLnZXcQDaLV3fTyHYGaFZjvtCZFkrhhw1vEB2fSpOk0nGecFLMGrPIAZqBP27apzMzf9rw7WI3U+yp4aqEeoRed/5qeNrMnyEB1RGdtoD6hpPNjDYOEa6rYdQT3Xprz8APIIYjP+Uf9Raf8KBzlR2RU=
 
-after_success:
-  - firebase deploy --token FIREBASE_TOKEN
-
-notifications:
-  email:
-    on_failure: change
-    on_success: change
