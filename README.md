@@ -1,10 +1,8 @@
 # NgCalendar
 
-[![travis build](https://img.shields.io/travis/kentcdodds/starwars-names.svg?style=flat-square)](https://travis-ci.com/github/insomniaTY/angular-calendar)
-![David](https://img.shields.io/david/dev/insomniaTY/angular-calendar)
+[![travis build](https://img.shields.io/travis/insomniaTY/angular-calendar.svg?style=flat-square)](https://travis-ci.com/github/insomniaTY/angular-calendar)
+![angular](https://img.shields.io/dev/insomniaTY/angular-calendar)
 [![Build Status](https://travis-ci.com/travis-ci/travis-web.svg?branch=master)](https://travis-ci.com/travis-ci/travis-web)
-[![Status](https://travis-ci.org/rstacruz/REPO.svg?branch=master)](https://travis-ci.org/insomniaTY/REPO)  
-
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.
 
