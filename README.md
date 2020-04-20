@@ -1,5 +1,11 @@
 # NgCalendar
 
+[![travis build](https://img.shields.io/travis/kentcdodds/starwars-names.svg?style=flat-square)](https://travis-ci.com/github/insomniaTY/angular-calendar)
+![David](https://img.shields.io/david/dev/insomniaTY/angular-calendar)
+[![Build Status](https://travis-ci.com/travis-ci/travis-web.svg?branch=master)](https://travis-ci.com/travis-ci/travis-web)
+[![Status](https://travis-ci.org/rstacruz/REPO.svg?branch=master)](https://travis-ci.org/insomniaTY/REPO)  
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.
 
 ## Development server
@@ -25,5 +31,3 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-![David](https://img.shields.io/david/dev/insomniaTY/angular-calendar)
